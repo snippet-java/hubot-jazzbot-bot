@@ -1,0 +1,29 @@
+{
+	"name": "hubot-jazzbot-bot",
+	"description": "A hubot script",
+	"version": "0.1.0",
+	"author": "Syahrul Aiman <syahrul.aiman@my.ibm.com>",
+	"license": "MIT",
+	"keywords": "hubot",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/snippet-java/hubot-jazzbot-bot.git"
+	},
+	"scripts": {
+		"start": "source config/env && hubot -a shell"
+	},
+	"bugs": {
+		"url": "https://github.com/snippet-java/hubot-jazzbot-bot/issues"
+	},
+	"dependencies": {
+	},
+	"peerDependencies": {
+		"hubot": "2.x",
+    	"cloudant": "*"
+	},
+	"files": [
+		"src",
+		"index.js"
+	],
+	"main": "index.js"
+}
