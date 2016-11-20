@@ -1,30 +1,28 @@
 # hubot-shipit
 
-A hubot script that provides easy access to the shipit squirrel and its kin.
-
-See [`src/shipit.coffee`](src/shipit.coffee) for full documentation.
+A hubot script
 
 ## Installation
 
 In hubot project repo, run:
 
-`npm install hubot-shipit --save`
+`npm install hubot-jazzbot-bot --save`
 
-Then add **hubot-shipit** to your `external-scripts.json`:
+Then add **hubot-jazzbot-bot** to your `external-scripts.json`:
 
 ```json
 [
-  "hubot-shipit"
+  "hubot-jazzbot-bot"
 ]
 ```
 
 ## Sample Interaction
 
 ```
-user1>> hubot ship it
-hubot>> https://img.skitch.com/20111026-r2wsngtu4jftwxmsytdke6arwd.png
+user1>> hubot bot add cf https://cfclient.mybluemix.net
+hubot>> bot cf added
 ```
 
 ## NPM Module
 
-https://www.npmjs.com/package/hubot-shipit
+https://www.npmjs.com/package/hubot-jazzbot-bot
