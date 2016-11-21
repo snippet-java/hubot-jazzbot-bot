@@ -1,4 +1,4 @@
-# hubot-shipit
+# hubot-jazzbot-bot
 
 A hubot script
 
