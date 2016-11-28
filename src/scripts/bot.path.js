@@ -31,7 +31,7 @@ module.exports = (robot) => {
 		var pref		= robot.brain.get(userId) || {};
 		var bot			= pref.bot || {};
 		if (bot[name]) {
-			execute(userId, name, path, text, res, (result) => {
+			execute(bot[name], userId, name, path, text, res, (result) => {
 				if (result.err) {
 					robot.logger.error(result.err);
 					res.reply(result.err);
@@ -41,7 +41,7 @@ module.exports = (robot) => {
 				res.reply(result.out);
 			});	
 		} else if (bot.exec) {
-			execute(userId, "exec", "cmd", res.match[0], res, (result) => {
+			execute(bot.exec, userId, "exec", "cmd", res.match[0], res, (result) => {
 				if (result.err) {
 					robot.logger.error(result.err);
 					res.reply(result.err);
@@ -58,13 +58,13 @@ module.exports = (robot) => {
 };
 
 
-function execute(userId, name, path, text, res, cb) {
-	if (!(bot[name].config)) {
+function execute(bot, userId, name, path, text, res, cb) {
+	if (!(bot.config)) {
 		cb({err:`${TAG}: ${name}.${path} - error: config not found.`});
 		return;
 	}
 	
-	const config = bot[name].config;
+	const config = bot.config;
 	var method = "GET";
 	if (config.method)
 		method = config.method;
