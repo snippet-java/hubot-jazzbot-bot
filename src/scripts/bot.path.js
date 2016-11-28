@@ -15,7 +15,7 @@
 const path = require('path');
 const TAG = path.basename(__filename);
 
-const REGEX = /(\S+)\s+(\S+)\s+(.*)/i;
+const REGEX = /(\S+)($|\s+(\S+)(.*))/i;
 module.exports = (robot) => {
 
 	// RegEx match
@@ -23,8 +23,8 @@ module.exports = (robot) => {
 		robot.logger.debug(`${TAG}: bot.path - RegEx match - res.message.text=${res.message.text}.`);
 		const userId	= res.message.user.id;
 		const name		= res.match[1];
-		const path		= res.match[2].replace(/^\//, "");
-		const text		= res.match[3].trim();
+		const path		= res.match[3].replace(/^\//, "");
+		const text		= res.match[4].trim();
 		
 		if (path === "help" || path === "set" || path === "get") return;
 		
@@ -41,7 +41,7 @@ module.exports = (robot) => {
 				res.reply(result.out);
 			});	
 		} else if (bot.exec) {
-			execute(bot.exec, userId, "exec", "cmd", res.match[1] + " " + res.match[2] + " " + res.match[3], res, (result) => {
+			execute(bot.exec, userId, "exec", "cmd", res.match[1] + " " + res.match[3] + " " + res.match[4], res, (result) => {
 				if (result.err) {
 					robot.logger.error(result.err);
 					res.reply(result.err);
