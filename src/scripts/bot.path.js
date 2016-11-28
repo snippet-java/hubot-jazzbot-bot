@@ -26,7 +26,7 @@ module.exports = (robot) => {
 		const path		= res.match[3].replace(/^\//, "");
 		const text		= res.match[4].trim();
 		
-		if (path === "help" || path === "set" || path === "get") return;
+		if (path === "help" || path === "set" || path === "get" || name == "catalog") return;
 		
 		var pref		= robot.brain.get(userId) || {};
 		var bot			= pref.bot || {};
