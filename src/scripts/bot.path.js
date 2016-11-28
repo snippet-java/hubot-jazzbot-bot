@@ -15,7 +15,7 @@
 const path = require('path');
 const TAG = path.basename(__filename);
 
-const REGEX = /(\S+)\s+(\S+)(.*)/i;
+const REGEX = /(\S+)\s+(\S+)\s+(.*)/i;
 module.exports = (robot) => {
 
 	// RegEx match
@@ -41,7 +41,7 @@ module.exports = (robot) => {
 				res.reply(result.out);
 			});	
 		} else if (bot.exec) {
-			execute(bot.exec, userId, "exec", "cmd", res.match[0], res, (result) => {
+			execute(bot.exec, userId, "exec", "cmd", res.match[1] + " " + res.match[2] + " " + res.match[3], res, (result) => {
 				if (result.err) {
 					robot.logger.error(result.err);
 					res.reply(result.err);
@@ -76,13 +76,13 @@ function execute(bot, userId, name, path, text, res, cb) {
 		url += "sessionId=" + userId + "&text=" + encodeURIComponent(text);
 							
 		res.http(url).get()( (err, httpres, body) => {
-			if (err)	cb({err:`${TAG}: ${name}.${path} - error: ${result.err}`});
+			if (err)	cb({err:`${TAG}: ${name}.${path} - error: ${err}`});
 			else		cb({out:body});
 		});
 	} else if (method.toLowerCase() === "post") {
 		const data = JSON.stringify({ sessionId : userId, text : text });	      
 		res.http(url).header('Content-Type', 'application/json').post(data)( (err, httpres, body) => {
-			if (err)	cb({err:`${TAG}: ${name}.${path} - error: ${result.err}`});
+			if (err)	cb({err:`${TAG}: ${name}.${path} - error: ${err}`});
 			else		cb({out:body});
 		});
 	}
