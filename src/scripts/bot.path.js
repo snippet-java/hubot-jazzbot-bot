@@ -23,8 +23,8 @@ module.exports = (robot) => {
 		robot.logger.debug(`${TAG}: bot.path - RegEx match - res.message.text=${res.message.text}.`);
 		const userId	= res.message.user.id;
 		var name		= res.match[1];
-		const path		= res.match[2].replace(/^\//, "");
-		const text		= res.match[3].trim();
+		var path		= res.match[2].replace(/^\//, "");
+		var text		= res.match[3].trim();
 		
 		if (path === "help" || path === "set" || path === "get") return;
 		
@@ -72,6 +72,8 @@ module.exports = (robot) => {
 		} else {
 			if (bot.exec) {
 				name = "exec";
+				path = "cmd";
+				text = res.match[0];
 				
 				if (bot[name].config) {
 					const config = bot[name].config;
@@ -112,8 +114,8 @@ module.exports = (robot) => {
 					res.reply(`[${name}] error: config not found.`);
 				}
 				
-			}
-			robot.logger.info(`${TAG}: ${name}.${path} - info: ${name} not registered.`);
+			} else
+				robot.logger.info(`${TAG}: ${name}.${path} - info: ${name} not registered.`);
 		}
 	});
 	
