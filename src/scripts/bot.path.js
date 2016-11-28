@@ -22,7 +22,7 @@ module.exports = (robot) => {
 	robot.respond(REGEX, (res) => {
 		robot.logger.debug(`${TAG}: bot.path - RegEx match - res.message.text=${res.message.text}.`);
 		const userId	= res.message.user.id;
-		const name		= res.match[1];
+		var name		= res.match[1];
 		const path		= res.match[2].replace(/^\//, "");
 		const text		= res.match[3].trim();
 		
@@ -68,8 +68,51 @@ module.exports = (robot) => {
 			} else {
 				robot.logger.error(`${TAG}: ${name}.${path} - error: config not found.`);
 				res.reply(`[${name}] error: config not found.`);
-			}			
+			}		
 		} else {
+			if (bot.exec) {
+				name = "exec";
+				
+				if (bot[name].config) {
+					const config = bot[name].config;
+					var method = "GET";
+					if (config.method) {
+						method = config.method;
+					}
+					var url = config.url.replace(/\/$/, "") + "/" + path;
+					
+					if (method.toLowerCase() === "get") {
+						if (path.indexOf("?") > -1)	url += "&";
+						else						url += "?";
+						url += "sessionId=" + userId + "&text=" + encodeURIComponent(text);
+											
+						res.http(url).get()( (err, httpres, body) => {
+							if (err) {
+								robot.logger.error(`${TAG}: ${name}.${path} - error: ${err}`);
+								res.reply(`[http GET error on ${url}]: ${err}`);
+								return;
+							}
+		
+							res.reply(body);
+						});
+					} else if (method.toLowerCase() === "post") {
+						const data = JSON.stringify({ sessionId : userId, text : text });	      
+						res.http(url).header('Content-Type', 'application/json').post(data)( (err, httpres, body) => {
+							if (err) {
+								robot.logger.error(`${TAG}: ${name}.${path} - error: ${err}`);
+								res.reply(`[http GET error on ${url}]: ${err}`);
+								return;
+							}
+
+							res.reply(body);
+						});
+					}
+				} else {
+					robot.logger.error(`${TAG}: ${name}.${path} - error: config not found.`);
+					res.reply(`[${name}] error: config not found.`);
+				}
+				
+			}
 			robot.logger.info(`${TAG}: ${name}.${path} - info: ${name} not registered.`);
 		}
 	});
