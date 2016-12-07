@@ -1,0 +1,3585 @@
+FAILED
+Incorrect Usage. The push command requires an app name. The app name can be supplied as an argument or with a manifest.yml file.
+
+NAME:
+   push - Push a new app or sync changes to an existing app
+
+USAGE:
+   Push a single app (with or without a manifest):
+   cf push APP_NAME [-b BUILDPACK_NAME] [-c COMMAND] [-d DOMAIN] [-f MANIFEST_PATH] [--docker-image DOCKER_IMAGE]
+   [-i NUM_INSTANCES] [-k DISK] [-m MEMORY] [--hostname HOST] [-p PATH] [-s STACK] [-t TIMEOUT] [-u HEALTH_CHECK_TYPE] [--route-path ROUTE_PATH] 
+   [--no-hostname] [--no-manifest] [--no-route] [--no-start] [--random-route]
+
+   Push multiple apps with a manifest:
+   cf push [-f MANIFEST_PATH] 
+
+ALIAS:
+   p
+
+OPTIONS:
+   -b                           Custom buildpack by name (e.g. my-buildpack) or Git URL (e.g. 'https://github.com/cloudfoundry/java-buildpack.git') or Git URL with a branch or tag (e.g. 'https://github.com/cloudfoundry/java-buildpack.git#v3.3.0' for 'v3.3.0' tag). To use built-in buildpacks only, specify 'default' or 'null'
+   -c                           Startup command, set to null to reset to default start command
+   -d                           Domain (e.g. example.com)
+   --docker-image, -o           Docker-image to be used (e.g. user/docker-image-name)
+   -f                           Path to manifest
+   --health-check-type, -u      Application health check type (e.g. 'port' or 'none')
+   --hostname, -n               Hostname (e.g. my-subdomain)
+   -i                           Number of instances
+   -k                           Disk limit (e.g. 256M, 1024M, 1G)
+   -m                           Memory limit (e.g. 256M, 1024M, 1G)
+   --no-hostname                Map the root domain to this app
+   --no-manifest                Ignore manifest file
+   --no-route                   Do not map a route to this app and remove routes from previous pushes of this app
+   --no-start                   Do not start an app after pushing
+   -p                           Path to app directory or to a zip file of the contents of the app directory
+   --random-route               Create a random route for this app
+   --route-path                 Path for the route
+   -s                           Stack to use (a stack is a pre-built file system, including an operating system, that can run apps)
+   -t                           Maximum time (in seconds) for CLI to wait for application start, other server side timeouts may apply
+
+[38;1mREQUEST:[0m [2016-12-07T16:07:49+08:00]
+GET /v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/apps?q=name%3Ajazzbot-hubot&inline-relations-depth=1 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:07:54+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:07:53 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 333737479
+
+23e2
+{
+  "total_results": 1,
+  "total_pages": 1,
+  "prev_url": null,
+  "next_url": null,
+  "resources": [
+    {
+      "metadata": {
+        "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+        "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+        "created_at": "2016-11-14T02:19:32Z",
+        "updated_at": "2016-11-28T04:42:03Z"
+      },
+      "entity": {
+        "name": "jazzbot-hubot",
+        "production": false,
+        "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "buildpack": null,
+        "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+        "environment_json": {
+          "ADAPTER": "web",
+          "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+          "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+          "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+          "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+          "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+          "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+          "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+          "HUBOT_NAME": "jazzbot",
+          "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+          "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+          "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+        },
+        "memory": 1024,
+        "instances": 1,
+        "disk_quota": 1024,
+        "state": "STARTED",
+        "version": "d72d5ab6-581e-4dc5-9495-8328a6a6216c",
+        "command": "./node_modules/hubot/bin/hubot --adapter web",
+        "console": false,
+        "debug": null,
+        "staging_task_id": "c77504e905044d03a7b0d974a99d5ff2",
+        "package_state": "STAGED",
+        "health_check_type": "port",
+        "health_check_timeout": null,
+        "staging_failed_reason": null,
+        "staging_failed_description": null,
+        "diego": false,
+        "docker_image": null,
+        "package_updated_at": "2016-11-28T04:38:53Z",
+        "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+        "enable_ssh": true,
+        "docker_credentials_json": {
+          "redacted_message": "[PRIVATE DATA HIDDEN]"
+        },
+        "ports": null,
+        "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "space": {
+          "metadata": {
+            "guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+            "url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+            "created_at": "2016-03-15T02:29:40Z",
+            "updated_at": "2016-03-15T02:30:48Z"
+          },
+          "entity": {
+            "name": "saiman-dev",
+            "organization_guid": "247dbd31-fe91-4a58-ba70-b9202d4873ad",
+            "space_quota_definition_guid": null,
+            "allow_ssh": true,
+            "organization_url": "/v2/organizations/247dbd31-fe91-4a58-ba70-b9202d4873ad",
+            "developers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/developers",
+            "managers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/managers",
+            "auditors_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/auditors",
+            "apps_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/apps",
+            "routes_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/routes",
+            "domains_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/domains",
+            "service_instances_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/service_instances",
+            "app_events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/app_events",
+            "events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/events",
+            "security_groups_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/security_groups"
+          }
+        },
+        "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "stack": {
+          "metadata": {
+            "guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+            "url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+            "created_at": "2015-05-14T05:45:37Z",
+            "updated_at": null
+          },
+          "entity": {
+            "name": "cflinuxfs2",
+            "description": "Ubuntu 14.04.2 trusty"
+          }
+        },
+        "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+        "routes": [
+          {
+            "metadata": {
+              "guid": "ea5418a7-8439-4ffc-9f69-d9f24c900083",
+              "url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083",
+              "created_at": "2016-11-14T02:19:38Z",
+              "updated_at": null
+            },
+            "entity": {
+              "host": "jazzbot-hubot",
+              "path": "",
+              "domain_guid": "f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+              "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+              "service_instance_guid": null,
+              "port": null,
+              "domain_url": "/v2/domains/f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+              "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+              "apps_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/apps",
+              "route_mappings_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/route_mappings"
+            }
+          }
+        ],
+        "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+        "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+        "service_bindings": [
+          {
+            "metadata": {
+              "guid": "9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+              "url": "/v2/service_bindings/9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+              "created_at": "2016-11-14T02:19:53Z",
+              "updated_at": null
+            },
+            "entity": {
+              "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_guid": "dafc2475-fe24-49b0-b42b-2645d9466728",
+              "credentials": {
+                "username": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix",
+                "password":"[PRIVATE DATA HIDDEN]",
+                "host": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com",
+                "port": 443,
+                "url": "https://531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix:dbd292af24d288cd3700f59a41cab9a5074167983ba5d6c0cb7b943f85052833@531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com"
+              },
+              "binding_options": {
+
+              },
+              "gateway_data": null,
+              "gateway_name": "",
+              "syslog_drain_url": null,
+              "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_url": "/v2/service_instances/dafc2475-fe24-49b0-b42b-2645d9466728"
+            }
+          },
+          {
+            "metadata": {
+              "guid": "ac2fe08e-7108-412a-8186-73aaa4002b24",
+              "url": "/v2/service_bindings/ac2fe08e-7108-412a-8186-73aaa4002b24",
+              "created_at": "2016-11-14T02:20:03Z",
+              "updated_at": null
+            },
+            "entity": {
+              "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_guid": "efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9",
+              "credentials": {
+                "url": "https://gateway.watsonplatform.net/natural-language-classifier/api",
+                "password":"[PRIVATE DATA HIDDEN]",
+                "username": "9c85fd55-abd1-4ae8-8cda-15aa1669cd15"
+              },
+              "binding_options": {
+
+              },
+              "gateway_data": null,
+              "gateway_name": "",
+              "syslog_drain_url": null,
+              "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_url": "/v2/service_instances/efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9"
+            }
+          },
+          {
+            "metadata": {
+              "guid": "fda0657f-41a7-4591-a071-c16d5aad3629",
+              "url": "/v2/service_bindings/fda0657f-41a7-4591-a071-c16d5aad3629",
+              "created_at": "2016-11-14T02:20:18Z",
+              "updated_at": null
+            },
+            "entity": {
+              "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_guid": "235ebf31-cf3b-4b8c-b074-a25f92df346c",
+              "credentials": {
+                "hostname": "pub-redis-14055.dal-05.1.sl.garantiadata.com",
+                "password":"[PRIVATE DATA HIDDEN]",
+                "port": "14055"
+              },
+              "binding_options": {
+
+              },
+              "gateway_data": null,
+              "gateway_name": "",
+              "syslog_drain_url": null,
+              "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_url": "/v2/service_instances/235ebf31-cf3b-4b8c-b074-a25f92df346c"
+            }
+          }
+        ],
+        "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+      }
+    }
+  ]
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:07:54+08:00]
+PUT /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663?async=true&inline-relations-depth=1 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+{"state":"STOPPED"}
+
+[38;1mRESPONSE:[0m [2016-12-07T16:07:58+08:00]
+HTTP/1.1 201 Created
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:07:56 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 3497820513
+
+206f
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:07:55Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STOPPED",
+    "version": "d72d5ab6-581e-4dc5-9495-8328a6a6216c",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "c77504e905044d03a7b0d974a99d5ff2",
+    "package_state": "STAGED",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "space": {
+      "metadata": {
+        "guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "created_at": "2016-03-15T02:29:40Z",
+        "updated_at": "2016-03-15T02:30:48Z"
+      },
+      "entity": {
+        "name": "saiman-dev",
+        "organization_guid": "247dbd31-fe91-4a58-ba70-b9202d4873ad",
+        "space_quota_definition_guid": null,
+        "allow_ssh": true,
+        "organization_url": "/v2/organizations/247dbd31-fe91-4a58-ba70-b9202d4873ad",
+        "developers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/developers",
+        "managers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/managers",
+        "auditors_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/auditors",
+        "apps_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/apps",
+        "routes_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/routes",
+        "domains_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/domains",
+        "service_instances_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/service_instances",
+        "app_events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/app_events",
+        "events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/events",
+        "security_groups_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/security_groups"
+      }
+    },
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "stack": {
+      "metadata": {
+        "guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "created_at": "2015-05-14T05:45:37Z",
+        "updated_at": null
+      },
+      "entity": {
+        "name": "cflinuxfs2",
+        "description": "Ubuntu 14.04.2 trusty"
+      }
+    },
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "routes": [
+      {
+        "metadata": {
+          "guid": "ea5418a7-8439-4ffc-9f69-d9f24c900083",
+          "url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083",
+          "created_at": "2016-11-14T02:19:38Z",
+          "updated_at": null
+        },
+        "entity": {
+          "host": "jazzbot-hubot",
+          "path": "",
+          "domain_guid": "f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+          "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+          "service_instance_guid": null,
+          "port": null,
+          "domain_url": "/v2/domains/f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+          "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+          "apps_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/apps",
+          "route_mappings_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/route_mappings"
+        }
+      }
+    ],
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "service_bindings": [
+      {
+        "metadata": {
+          "guid": "9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+          "url": "/v2/service_bindings/9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+          "created_at": "2016-11-14T02:19:53Z",
+          "updated_at": null
+        },
+        "entity": {
+          "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_guid": "dafc2475-fe24-49b0-b42b-2645d9466728",
+          "credentials": {
+            "username": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix",
+            "password":"[PRIVATE DATA HIDDEN]",
+            "host": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com",
+            "port": 443,
+            "url": "https://531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix:dbd292af24d288cd3700f59a41cab9a5074167983ba5d6c0cb7b943f85052833@531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com"
+          },
+          "binding_options": {
+
+          },
+          "gateway_data": null,
+          "gateway_name": "",
+          "syslog_drain_url": null,
+          "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_url": "/v2/service_instances/dafc2475-fe24-49b0-b42b-2645d9466728"
+        }
+      },
+      {
+        "metadata": {
+          "guid": "ac2fe08e-7108-412a-8186-73aaa4002b24",
+          "url": "/v2/service_bindings/ac2fe08e-7108-412a-8186-73aaa4002b24",
+          "created_at": "2016-11-14T02:20:03Z",
+          "updated_at": null
+        },
+        "entity": {
+          "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_guid": "efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9",
+          "credentials": {
+            "url": "https://gateway.watsonplatform.net/natural-language-classifier/api",
+            "password":"[PRIVATE DATA HIDDEN]",
+            "username": "9c85fd55-abd1-4ae8-8cda-15aa1669cd15"
+          },
+          "binding_options": {
+
+          },
+          "gateway_data": null,
+          "gateway_name": "",
+          "syslog_drain_url": null,
+          "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_url": "/v2/service_instances/efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9"
+        }
+      },
+      {
+        "metadata": {
+          "guid": "fda0657f-41a7-4591-a071-c16d5aad3629",
+          "url": "/v2/service_bindings/fda0657f-41a7-4591-a071-c16d5aad3629",
+          "created_at": "2016-11-14T02:20:18Z",
+          "updated_at": null
+        },
+        "entity": {
+          "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_guid": "235ebf31-cf3b-4b8c-b074-a25f92df346c",
+          "credentials": {
+            "hostname": "pub-redis-14055.dal-05.1.sl.garantiadata.com",
+            "password":"[PRIVATE DATA HIDDEN]",
+            "port": "14055"
+          },
+          "binding_options": {
+
+          },
+          "gateway_data": null,
+          "gateway_name": "",
+          "syslog_drain_url": null,
+          "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_url": "/v2/service_instances/235ebf31-cf3b-4b8c-b074-a25f92df346c"
+        }
+      }
+    ],
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mWEBSOCKET REQUEST:[0m [2016-12-07T16:07:58+08:00]
+GET /apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/stream HTTP/1.1
+Host: wss://doppler.ng.bluemix.net:443
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: [HIDDEN]
+Origin: http://localhost
+Authorization: [PRIVATE DATA HIDDEN]
+
+
+[38;1mWEBSOCKET RESPONSE:[0m [2016-12-07T16:07:59+08:00]
+HTTP/1.1 101 Switching Protocols
+Connection: Upgrade
+Sec-Websocket-Accept: EGscRVtACG54RKjDOz6FqUndomg=
+Date: Wed, 07 Dec 2016 08:08:00 GMT
+X-Global-Transaction-Id: 1563576893
+Upgrade: websocket
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:07:59+08:00]
+PUT /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663?async=true&inline-relations-depth=1 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+{"state":"STARTED"}
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:04+08:00]
+HTTP/1.1 201 Created
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:03 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1601978237
+
+206f
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:01Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "59b182d5-30c9-49de-ab4a-61c5c0612253",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "c77504e905044d03a7b0d974a99d5ff2",
+    "package_state": "STAGED",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "space": {
+      "metadata": {
+        "guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "created_at": "2016-03-15T02:29:40Z",
+        "updated_at": "2016-03-15T02:30:48Z"
+      },
+      "entity": {
+        "name": "saiman-dev",
+        "organization_guid": "247dbd31-fe91-4a58-ba70-b9202d4873ad",
+        "space_quota_definition_guid": null,
+        "allow_ssh": true,
+        "organization_url": "/v2/organizations/247dbd31-fe91-4a58-ba70-b9202d4873ad",
+        "developers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/developers",
+        "managers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/managers",
+        "auditors_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/auditors",
+        "apps_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/apps",
+        "routes_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/routes",
+        "domains_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/domains",
+        "service_instances_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/service_instances",
+        "app_events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/app_events",
+        "events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/events",
+        "security_groups_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/security_groups"
+      }
+    },
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "stack": {
+      "metadata": {
+        "guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "created_at": "2015-05-14T05:45:37Z",
+        "updated_at": null
+      },
+      "entity": {
+        "name": "cflinuxfs2",
+        "description": "Ubuntu 14.04.2 trusty"
+      }
+    },
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "routes": [
+      {
+        "metadata": {
+          "guid": "ea5418a7-8439-4ffc-9f69-d9f24c900083",
+          "url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083",
+          "created_at": "2016-11-14T02:19:38Z",
+          "updated_at": null
+        },
+        "entity": {
+          "host": "jazzbot-hubot",
+          "path": "",
+          "domain_guid": "f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+          "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+          "service_instance_guid": null,
+          "port": null,
+          "domain_url": "/v2/domains/f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+          "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+          "apps_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/apps",
+          "route_mappings_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/route_mappings"
+        }
+      }
+    ],
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "service_bindings": [
+      {
+        "metadata": {
+          "guid": "9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+          "url": "/v2/service_bindings/9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+          "created_at": "2016-11-14T02:19:53Z",
+          "updated_at": null
+        },
+        "entity": {
+          "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_guid": "dafc2475-fe24-49b0-b42b-2645d9466728",
+          "credentials": {
+            "username": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix",
+            "password":"[PRIVATE DATA HIDDEN]",
+            "host": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com",
+            "port": 443,
+            "url": "https://531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix:dbd292af24d288cd3700f59a41cab9a5074167983ba5d6c0cb7b943f85052833@531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com"
+          },
+          "binding_options": {
+
+          },
+          "gateway_data": null,
+          "gateway_name": "",
+          "syslog_drain_url": null,
+          "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_url": "/v2/service_instances/dafc2475-fe24-49b0-b42b-2645d9466728"
+        }
+      },
+      {
+        "metadata": {
+          "guid": "ac2fe08e-7108-412a-8186-73aaa4002b24",
+          "url": "/v2/service_bindings/ac2fe08e-7108-412a-8186-73aaa4002b24",
+          "created_at": "2016-11-14T02:20:03Z",
+          "updated_at": null
+        },
+        "entity": {
+          "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_guid": "efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9",
+          "credentials": {
+            "url": "https://gateway.watsonplatform.net/natural-language-classifier/api",
+            "password":"[PRIVATE DATA HIDDEN]",
+            "username": "9c85fd55-abd1-4ae8-8cda-15aa1669cd15"
+          },
+          "binding_options": {
+
+          },
+          "gateway_data": null,
+          "gateway_name": "",
+          "syslog_drain_url": null,
+          "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_url": "/v2/service_instances/efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9"
+        }
+      },
+      {
+        "metadata": {
+          "guid": "fda0657f-41a7-4591-a071-c16d5aad3629",
+          "url": "/v2/service_bindings/fda0657f-41a7-4591-a071-c16d5aad3629",
+          "created_at": "2016-11-14T02:20:18Z",
+          "updated_at": null
+        },
+        "entity": {
+          "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_guid": "235ebf31-cf3b-4b8c-b074-a25f92df346c",
+          "credentials": {
+            "hostname": "pub-redis-14055.dal-05.1.sl.garantiadata.com",
+            "password":"[PRIVATE DATA HIDDEN]",
+            "port": "14055"
+          },
+          "binding_options": {
+
+          },
+          "gateway_data": null,
+          "gateway_name": "",
+          "syslog_drain_url": null,
+          "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+          "service_instance_url": "/v2/service_instances/235ebf31-cf3b-4b8c-b074-a25f92df346c"
+        }
+      }
+    ],
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:04+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/instances HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:06+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:07 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Client-Ip: 210.187.103.16
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1463014583
+X-Vcap-Request-Id: ed4ad0da-0814-4827-5e16-ff2b88dfd93f,5d06afc5-dcce-4389-5ce4-5a05c53146d5::b133390b-4af9-441e-97cd-59252d7194ef
+
+7c
+{"0":{"state":"STARTING","since":1481098082.000772,"debug_ip":null,"debug_port":null,"console_ip":null,"console_port":null}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:06+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/stats HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:10+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:10 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 3497876129
+
+29
+{"0":{"state":"DOWN","since":1481098090}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:15+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/instances HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:17+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:18 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 2459037453
+
+7c
+{"0":{"state":"RUNNING","since":1481098095.0383298,"debug_ip":null,"debug_port":null,"console_ip":null,"console_port":null}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:17+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/stats HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:20+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:21 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 2459041789
+
+129
+{"0":{"state":"RUNNING","stats":{"name":"jazzbot-hubot","uris":["jazzbot-hubot.mybluemix.net"],"host":"169.46.101.104","port":62041,"uptime":18,"mem_quota":1073741824,"disk_quota":1073741824,"fds_quota":16384,"usage":{"time":"2016-12-07 08:08:20 +0000","cpu":0,"mem":142032896,"disk":377954304}}}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:20+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:26+08:00]
+GET /v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/apps?q=name%3Ajazzbot-hubot&inline-relations-depth=1 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:30+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:29 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4080337023
+
+23e2
+{
+  "total_results": 1,
+  "total_pages": 1,
+  "prev_url": null,
+  "next_url": null,
+  "resources": [
+    {
+      "metadata": {
+        "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+        "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+        "created_at": "2016-11-14T02:19:32Z",
+        "updated_at": "2016-12-07T08:08:01Z"
+      },
+      "entity": {
+        "name": "jazzbot-hubot",
+        "production": false,
+        "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "buildpack": null,
+        "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+        "environment_json": {
+          "ADAPTER": "web",
+          "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+          "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+          "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+          "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+          "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+          "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+          "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+          "HUBOT_NAME": "jazzbot",
+          "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+          "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+          "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+        },
+        "memory": 1024,
+        "instances": 1,
+        "disk_quota": 1024,
+        "state": "STARTED",
+        "version": "59b182d5-30c9-49de-ab4a-61c5c0612253",
+        "command": "./node_modules/hubot/bin/hubot --adapter web",
+        "console": false,
+        "debug": null,
+        "staging_task_id": "c77504e905044d03a7b0d974a99d5ff2",
+        "package_state": "STAGED",
+        "health_check_type": "port",
+        "health_check_timeout": null,
+        "staging_failed_reason": null,
+        "staging_failed_description": null,
+        "diego": false,
+        "docker_image": null,
+        "package_updated_at": "2016-11-28T04:38:53Z",
+        "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+        "enable_ssh": true,
+        "docker_credentials_json": {
+          "redacted_message": "[PRIVATE DATA HIDDEN]"
+        },
+        "ports": null,
+        "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+        "space": {
+          "metadata": {
+            "guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+            "url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+            "created_at": "2016-03-15T02:29:40Z",
+            "updated_at": "2016-03-15T02:30:48Z"
+          },
+          "entity": {
+            "name": "saiman-dev",
+            "organization_guid": "247dbd31-fe91-4a58-ba70-b9202d4873ad",
+            "space_quota_definition_guid": null,
+            "allow_ssh": true,
+            "organization_url": "/v2/organizations/247dbd31-fe91-4a58-ba70-b9202d4873ad",
+            "developers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/developers",
+            "managers_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/managers",
+            "auditors_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/auditors",
+            "apps_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/apps",
+            "routes_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/routes",
+            "domains_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/domains",
+            "service_instances_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/service_instances",
+            "app_events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/app_events",
+            "events_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/events",
+            "security_groups_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7/security_groups"
+          }
+        },
+        "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+        "stack": {
+          "metadata": {
+            "guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+            "url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+            "created_at": "2015-05-14T05:45:37Z",
+            "updated_at": null
+          },
+          "entity": {
+            "name": "cflinuxfs2",
+            "description": "Ubuntu 14.04.2 trusty"
+          }
+        },
+        "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+        "routes": [
+          {
+            "metadata": {
+              "guid": "ea5418a7-8439-4ffc-9f69-d9f24c900083",
+              "url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083",
+              "created_at": "2016-11-14T02:19:38Z",
+              "updated_at": null
+            },
+            "entity": {
+              "host": "jazzbot-hubot",
+              "path": "",
+              "domain_guid": "f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+              "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+              "service_instance_guid": null,
+              "port": null,
+              "domain_url": "/v2/domains/f4b90d7e-2cd3-4d30-b200-f28bbaf6be20",
+              "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+              "apps_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/apps",
+              "route_mappings_url": "/v2/routes/ea5418a7-8439-4ffc-9f69-d9f24c900083/route_mappings"
+            }
+          }
+        ],
+        "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+        "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+        "service_bindings": [
+          {
+            "metadata": {
+              "guid": "9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+              "url": "/v2/service_bindings/9dff22fd-115a-4419-bb5e-8dbb460f9c00",
+              "created_at": "2016-11-14T02:19:53Z",
+              "updated_at": null
+            },
+            "entity": {
+              "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_guid": "dafc2475-fe24-49b0-b42b-2645d9466728",
+              "credentials": {
+                "username": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix",
+                "password":"[PRIVATE DATA HIDDEN]",
+                "host": "531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com",
+                "port": 443,
+                "url": "https://531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix:dbd292af24d288cd3700f59a41cab9a5074167983ba5d6c0cb7b943f85052833@531b25d8-ec2b-47e5-9640-4e5996a634ac-bluemix.cloudant.com"
+              },
+              "binding_options": {
+
+              },
+              "gateway_data": null,
+              "gateway_name": "",
+              "syslog_drain_url": null,
+              "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_url": "/v2/service_instances/dafc2475-fe24-49b0-b42b-2645d9466728"
+            }
+          },
+          {
+            "metadata": {
+              "guid": "ac2fe08e-7108-412a-8186-73aaa4002b24",
+              "url": "/v2/service_bindings/ac2fe08e-7108-412a-8186-73aaa4002b24",
+              "created_at": "2016-11-14T02:20:03Z",
+              "updated_at": null
+            },
+            "entity": {
+              "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_guid": "efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9",
+              "credentials": {
+                "url": "https://gateway.watsonplatform.net/natural-language-classifier/api",
+                "password":"[PRIVATE DATA HIDDEN]",
+                "username": "9c85fd55-abd1-4ae8-8cda-15aa1669cd15"
+              },
+              "binding_options": {
+
+              },
+              "gateway_data": null,
+              "gateway_name": "",
+              "syslog_drain_url": null,
+              "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_url": "/v2/service_instances/efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9"
+            }
+          },
+          {
+            "metadata": {
+              "guid": "fda0657f-41a7-4591-a071-c16d5aad3629",
+              "url": "/v2/service_bindings/fda0657f-41a7-4591-a071-c16d5aad3629",
+              "created_at": "2016-11-14T02:20:18Z",
+              "updated_at": null
+            },
+            "entity": {
+              "app_guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_guid": "235ebf31-cf3b-4b8c-b074-a25f92df346c",
+              "credentials": {
+                "hostname": "pub-redis-14055.dal-05.1.sl.garantiadata.com",
+                "password":"[PRIVATE DATA HIDDEN]",
+                "port": "14055"
+              },
+              "binding_options": {
+
+              },
+              "gateway_data": null,
+              "gateway_name": "",
+              "syslog_drain_url": null,
+              "app_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+              "service_instance_url": "/v2/service_instances/235ebf31-cf3b-4b8c-b074-a25f92df346c"
+            }
+          }
+        ],
+        "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+      }
+    }
+  ]
+}
+0
+
+
+
+[38;1mWEBSOCKET REQUEST:[0m [2016-12-07T16:08:30+08:00]
+GET /apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/stream HTTP/1.1
+Host: wss://doppler.ng.bluemix.net:443
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: [HIDDEN]
+Origin: http://localhost
+Authorization: [PRIVATE DATA HIDDEN]
+
+
+[38;1mWEBSOCKET RESPONSE:[0m [2016-12-07T16:08:32+08:00]
+HTTP/1.1 101 Switching Protocols
+Connection: Upgrade
+Sec-Websocket-Accept: DlNPGVUNDNJy6rEN+sXxIqurScg=
+Date: Wed, 07 Dec 2016 08:08:32 GMT
+X-Global-Transaction-Id: 4006267743
+Upgrade: websocket
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:32+08:00]
+POST /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/restage HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:47+08:00]
+HTTP/1.1 201 Created
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:47 GMT
+Location: /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1563625677
+
+7ed
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:47+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:49+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:49 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 2208418419
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:08:54+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:08:56+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:08:56 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Client-Ip: 210.187.103.16
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 2613383689
+X-Vcap-Request-Id: c64c5fe3-24da-4d05-65a3-705357959c21,bfef443a-4f58-4cce-4c04-d338e46412f6::89e98913-f57b-4187-8e5c-20db65bd83be
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:01+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:03+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:03 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1602182029
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:08+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:10+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:10 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 2647816633
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:15+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:17+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:17 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 3523573617
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:22+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:24+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:24 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 405439431
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:29+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:31+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:31 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4006741183
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:36+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:38+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:38 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4162470719
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:43+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:45+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:45 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4094180831
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:50+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:52+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:52 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 405536231
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:09:57+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:09:59+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:09:59 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1345025255
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:04+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:05+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:06 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4082076303
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:10+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:12+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:12 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4007394271
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:17+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:19+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:19 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 3498533569
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:24+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:26+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:26 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4007466927
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:31+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:33+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:33 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4094336159
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:38+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:40+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:40 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4164010815
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:45+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:47+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:47 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1345468055
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:52+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:10:54+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:10:54 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 334340183
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:10:59+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:01+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:01 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4080785519
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:06+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:08+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:07 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4094881279
+
+9c1
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:08:34Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:13+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:15+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:15 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 3498671249
+
+995
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:11:08Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:20+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:21+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:22 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 3524013233
+
+995
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:11:08Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.0, buildpack-v3.8-20161006-1211)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "PENDING",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:26+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:29+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:28 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 416021463
+
+9c0
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:11:23Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.2, buildpack-v3.9-20161128-1327)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "STAGED",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:34+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/instances HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:36+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:36 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 3524133969
+
+7d
+{"0":{"state":"STARTING","since":1481098283.7200089,"debug_ip":null,"debug_port":null,"console_ip":null,"console_port":null}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:36+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/stats HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:40+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:40 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 2549012265
+
+29
+{"0":{"state":"DOWN","since":1481098300}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:45+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/instances HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:47+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:47 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 210960447
+
+7b
+{"0":{"state":"RUNNING","since":1481098302.060522,"debug_ip":null,"debug_port":null,"console_ip":null,"console_port":null}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:47+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/stats HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:48+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:49 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1631619533
+
+13a
+{"0":{"state":"RUNNING","stats":{"name":"jazzbot-hubot","uris":["jazzbot-hubot.mybluemix.net"],"host":"169.55.254.149","port":61539,"uptime":25,"mem_quota":1073741824,"disk_quota":1073741824,"fds_quota":16384,"usage":{"time":"2016-12-07 08:11:49 +0000","cpu":1.3335624108326893,"mem":135139328,"disk":377901056}}}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:48+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663 HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:50+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:50 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4095187935
+
+9c0
+{
+  "metadata": {
+    "guid": "c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663",
+    "created_at": "2016-11-14T02:19:32Z",
+    "updated_at": "2016-12-07T08:11:23Z"
+  },
+  "entity": {
+    "name": "jazzbot-hubot",
+    "production": false,
+    "space_guid": "659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "buildpack": null,
+    "detected_buildpack": "SDK for Node.js(TM) (ibm-node.js-4.6.2, buildpack-v3.9-20161128-1327)",
+    "environment_json": {
+      "ADAPTER": "web",
+      "HUBOT_BLUEMIX_API": "https://api.ng.bluemix.net",
+      "HUBOT_BLUEMIX_ORG": "ecodadmi@us.ibm.com",
+      "HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]",
+      "HUBOT_BLUEMIX_SPACE": "saiman-dev",
+      "HUBOT_BLUEMIX_USER": "syahrul.aiman@my.ibm.com",
+      "HUBOT_IBMCLOUD_POWERUSERS": "<Slack userIds that require power access>",
+      "HUBOT_IBMCLOUD_READERUSERS": "<Slack userIds that require read access>",
+      "HUBOT_NAME": "jazzbot",
+      "HUBOT_REST_SEND_URL": "http://jazzbot.mybluemix.net/messages/",
+      "HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]",
+      "REDIS_URL": "redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"
+    },
+    "memory": 1024,
+    "instances": 1,
+    "disk_quota": 1024,
+    "state": "STARTED",
+    "version": "30570a0c-622d-4d4b-ac09-c1299325002a",
+    "command": "./node_modules/hubot/bin/hubot --adapter web",
+    "console": false,
+    "debug": null,
+    "staging_task_id": "9b39a7697c3047d9a6d98895142679a1",
+    "package_state": "STAGED",
+    "health_check_type": "port",
+    "health_check_timeout": null,
+    "staging_failed_reason": null,
+    "staging_failed_description": null,
+    "diego": false,
+    "docker_image": null,
+    "package_updated_at": "2016-11-28T04:38:53Z",
+    "detected_start_command": "./node_modules/hubot/bin/hubot --adapter web",
+    "enable_ssh": true,
+    "docker_credentials_json": {
+      "redacted_message": "[PRIVATE DATA HIDDEN]"
+    },
+    "ports": null,
+    "space_url": "/v2/spaces/659f779a-3943-4f2d-b8dd-15436a9da1a7",
+    "stack_url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "routes_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/routes",
+    "events_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/events",
+    "service_bindings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/service_bindings",
+    "route_mappings_url": "/v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/route_mappings"
+  }
+}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:50+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/summary HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:53+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:52 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4095194783
+
+dba
+{"guid":"c51ea18f-dbfd-4b14-b92a-959cf5944663","name":"jazzbot-hubot","routes":[{"guid":"ea5418a7-8439-4ffc-9f69-d9f24c900083","host":"jazzbot-hubot","port":null,"path":"","domain":{"guid":"f4b90d7e-2cd3-4d30-b200-f28bbaf6be20","name":"mybluemix.net"}}],"running_instances":1,"services":[{"guid":"235ebf31-cf3b-4b8c-b074-a25f92df346c","name":"sample-rediscloud","bound_app_count":3,"last_operation":{"type":"create","state":"succeeded","description":"","updated_at":null,"created_at":"2016-10-30T01:32:11Z"},"dashboard_url":"https://bluemix.marketplace.ibmcloud.com/api/custom/cloudfoundry/v2/sso/start?serviceUuid=235ebf31-cf3b-4b8c-b074-a25f92df346c","service_plan":{"guid":"3ad7272c-e8f2-4949-aade-7698eddcfee4","name":"30mb","service":{"guid":"289dab26-3200-4140-b405-725ba4ed2e5f","label":"rediscloud","provider":null,"version":null}}},{"guid":"dafc2475-fe24-49b0-b42b-2645d9466728","name":"cloudbot-cloudant","bound_app_count":1,"last_operation":{"type":"create","state":"succeeded","description":"","updated_at":null,"created_at":"2016-11-09T05:37:19Z"},"dashboard_url":"https://cloudantbroker.ng.bluemix.net/dashboard/dafc2475-fe24-49b0-b42b-2645d9466728","service_plan":{"guid":"e72c6030-cfe3-4477-9fb1-ca2b0408cbcb","name":"Lite","service":{"guid":"14c83ad2-6fd4-439a-8c3a-d1a20f8a2381","label":"cloudantNoSQLDB","provider":null,"version":null}}},{"guid":"efd4ff5f-8196-48a9-9d4b-0019fa6e8cf9","name":"cloudbot-nlc","bound_app_count":1,"last_operation":{"type":"create","state":"succeeded","description":"","updated_at":null,"created_at":"2016-11-09T05:37:41Z"},"dashboard_url":"https://www.ibm.com/watson/developercloud/dashboard/en/nl-classifier-dashboard.html","service_plan":{"guid":"202d0936-6ec6-47b3-af0f-6fd6ed06cadd","name":"standard","service":{"guid":"fc6c8b5e-593a-4c44-a926-e81e71fe9822","label":"natural_language_classifier","provider":null,"version":null}}}],"available_domains":[{"guid":"f4b90d7e-2cd3-4d30-b200-f28bbaf6be20","name":"mybluemix.net","router_group_guid":null,"router_group_type":null}],"production":false,"space_guid":"659f779a-3943-4f2d-b8dd-15436a9da1a7","stack_guid":"ac91d31a-86a3-453b-babf-8d49c9d763fc","buildpack":null,"detected_buildpack":"SDK for Node.js(TM) (ibm-node.js-4.6.2, buildpack-v3.9-20161128-1327)","environment_json":{"ADAPTER":"web","HUBOT_BLUEMIX_API":"https://api.ng.bluemix.net","HUBOT_BLUEMIX_ORG":"ecodadmi@us.ibm.com","HUBOT_BLUEMIX_PASSWORD":"[PRIVATE DATA HIDDEN]","HUBOT_BLUEMIX_SPACE":"saiman-dev","HUBOT_BLUEMIX_USER":"syahrul.aiman@my.ibm.com","HUBOT_IBMCLOUD_POWERUSERS":"<Slack userIds that require power access>","HUBOT_IBMCLOUD_READERUSERS":"<Slack userIds that require read access>","HUBOT_NAME":"jazzbot","HUBOT_REST_SEND_URL":"http://jazzbot.mybluemix.net/messages/","HUBOT_SLACK_TOKEN":"[PRIVATE DATA HIDDEN]","REDIS_URL":"redis://F6BQJT5wv6mWy3u1@pub-redis-14055.dal-05.1.sl.garantiadata.com:14055"},"memory":1024,"instances":1,"disk_quota":1024,"state":"STARTED","version":"30570a0c-622d-4d4b-ac09-c1299325002a","command":"./node_modules/hubot/bin/hubot --adapter web","console":false,"debug":null,"staging_task_id":"9b39a7697c3047d9a6d98895142679a1","package_state":"STAGED","health_check_type":"port","health_check_timeout":null,"staging_failed_reason":null,"staging_failed_description":null,"diego":false,"docker_image":null,"package_updated_at":"2016-11-28T04:38:53Z","detected_start_command":"./node_modules/hubot/bin/hubot --adapter web","enable_ssh":true,"docker_credentials_json":{"redacted_message":"[PRIVATE DATA HIDDEN]"},"ports":null}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:53+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/instances HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:54+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:55 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1631631053
+
+7b
+{"0":{"state":"RUNNING","since":1481098302.060522,"debug_ip":null,"debug_port":null,"console_ip":null,"console_port":null}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:54+08:00]
+GET /v2/apps/c51ea18f-dbfd-4b14-b92a-959cf5944663/stats HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:56+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:56 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 1316544231
+
+13a
+{"0":{"state":"RUNNING","stats":{"name":"jazzbot-hubot","uris":["jazzbot-hubot.mybluemix.net"],"host":"169.55.254.149","port":61539,"uptime":33,"mem_quota":1073741824,"disk_quota":1073741824,"fds_quota":16384,"usage":{"time":"2016-12-07 08:11:56 +0000","cpu":1.3335624108326893,"mem":135139328,"disk":377901056}}}}
+0
+
+
+
+[38;1mREQUEST:[0m [2016-12-07T16:11:56+08:00]
+GET /v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc HTTP/1.1
+Host: api.ng.bluemix.net
+Accept: application/json
+Authorization: [PRIVATE DATA HIDDEN]
+Connection: close
+Content-Type: application/json
+User-Agent: go-cli 6.22.2+a95e24c / linux
+
+
+
+[38;1mRESPONSE:[0m [2016-12-07T16:11:58+08:00]
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/json;charset=utf-8
+Date: Wed, 07 Dec 2016 08:11:58 GMT
+Server: nginx
+X-Backside-Transport: OK OK
+X-Client-Ip: 210.187.103.16
+X-Content-Type-Options: nosniff
+X-Global-Transaction-Id: 4068775247
+X-Vcap-Request-Id: 128cdea2-de77-4f58-4f09-98e23be9294d,2001454d-0690-4a03-5d2b-4905690b6355::cdf32d16-7649-4cba-9361-7990fd0de5c0
+
+122
+{
+  "metadata": {
+    "guid": "ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "url": "/v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc",
+    "created_at": "2015-05-14T05:45:37Z",
+    "updated_at": null
+  },
+  "entity": {
+    "name": "cflinuxfs2",
+    "description": "Ubuntu 14.04.2 trusty"
+  }
+}
+0
+
+
