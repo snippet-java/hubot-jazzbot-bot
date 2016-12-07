@@ -39,7 +39,17 @@ module.exports = (robot) => {
 				}
 
 				res.reply(result.out);
-			});	
+			});
+		} else if (bot.advisor && (name == "start" || name == "reply")) {
+			execute(bot.advisor, userId, "advisor", name, res.match[3] + " " + res.match[4], res, (result) => {
+				if (result.err) {
+					robot.logger.error(result.err);
+					res.reply(result.err);
+					return;
+				}
+
+				res.reply(result.out);
+			});
 		} else if (bot.exec) {
 			execute(bot.exec, userId, "exec", "cmd", res.match[1] + " " + res.match[3] + " " + res.match[4], res, (result) => {
 				if (result.err) {
