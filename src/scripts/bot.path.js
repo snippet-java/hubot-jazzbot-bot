@@ -23,8 +23,8 @@ module.exports = (robot) => {
 		robot.logger.debug(`${TAG}: bot.path - RegEx match - res.message.text=${res.message.text}.`);
 		const userId	= res.message.user.id;
 		const name		= res.match[1];
-		const path		= res.match[3].replace(/^\//, "");
-		const text		= res.match[4].trim();
+		const path		= (res.match[3] || "").replace(/^\//, "");
+		const text		= (res.match[4] || "").trim();
 		
 		if (path === "help" || path === "set" || path === "get" || name == "catalog") return;
 		
